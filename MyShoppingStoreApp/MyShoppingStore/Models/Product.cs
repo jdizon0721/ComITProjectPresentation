@@ -22,8 +22,7 @@ namespace MyShoppingStore.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-
-        [Range(1, int.MaxValue, ErrorMessage = "You must choose a category")]
+        [Range(1, int.MaxValue, ErrorMessage ="You must choose a category")]
         public int CategoryId { get; set; }
         
         public string Image { get; set; }

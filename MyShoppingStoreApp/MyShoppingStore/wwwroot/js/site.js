@@ -19,7 +19,7 @@ function readURL(input) {
         let reader = new FileReader();
 
         reader.onload = function (e) {
-            $("img#imgpreview").attr("scr", e.target.result).width(200).height(200);
+            $("img#imgpreview").attr("src", e.target.result).width(200).height(200);
 
         };
 

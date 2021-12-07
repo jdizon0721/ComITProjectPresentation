@@ -22,11 +22,8 @@ namespace MyShoppingStore.Infrastructure
                     return new ValidationResult(GetErrorMessage());
                 }
             }
-
-             return ValidationResult.Success;
-            
+            return ValidationResult.Success;
         }
-
         private string GetErrorMessage()
         {
             return "Allowed extensions are jpg and png.";
