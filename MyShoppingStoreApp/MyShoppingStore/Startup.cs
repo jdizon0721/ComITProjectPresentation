@@ -53,6 +53,11 @@ namespace MyShoppingStore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "pages",
+                    "{Slug?}",
+                    defaults:new {Controller = "Pages", action = "Page"});
+
+                endpoints.MapControllerRoute(
                     name: "areas",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
