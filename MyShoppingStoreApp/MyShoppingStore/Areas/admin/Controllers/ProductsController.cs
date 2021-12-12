@@ -31,6 +31,10 @@ namespace MyShoppingStore.Areas.admin.Controllers
                                   .Skip((p - 1) * pageSize)
                                   .Take(pageSize);
 
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.Totalpages = (int)Math.Ceiling((decimal)context.Products.Count() / pageSize);
+
             return View(await products.ToListAsync());
         }
         //Take /admin /Products /create 
