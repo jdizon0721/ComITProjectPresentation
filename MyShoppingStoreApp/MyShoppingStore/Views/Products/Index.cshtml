@@ -10,7 +10,7 @@
     @foreach(var item in Model)
     {
         <div class ="col-3">
-            <img src = "~/media/products/@item.Image" class="img-fluid" alt="" />
+            <img src ="~/media/products/@item.Image" class="img-fluid" alt="" />
             <h4>@item.Name</h4>
             <div>
                 @Html.Raw(item.Description)
@@ -29,7 +29,5 @@
         <div class ="d-flex w-100 justify-content-center">
         <pagination page-count="@ViewBag.TotalPages" page-target="/products/@ViewBag.CategorySlug" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
         </div>
-    }
-
-
+    } 
 </div>

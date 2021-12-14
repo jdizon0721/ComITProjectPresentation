@@ -16,6 +16,7 @@ namespace MyShoppingStore.Controllers
         {
             this.context = context;
         }
+
         //Take /products
         public async Task<IActionResult> Index(int p = 1)
         {
@@ -31,7 +32,7 @@ namespace MyShoppingStore.Controllers
             return View(await products.ToListAsync());
         }
 
-        //Take /products/Category
+        //take /products/category
         public async Task<IActionResult> ProductsByCategory(string categorySlug, int p = 1)
         {
             Category category = await context.Categories.Where(x => x.Slug == categorySlug).FirstOrDefaultAsync();
