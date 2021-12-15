@@ -73,17 +73,17 @@ namespace MyShoppingStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    "pages",
-                    "{Slug?}",
-                    defaults:new { controller = "Pages", action = "Page"}
-                );
+                // endpoints.MapControllerRoute(
+                //     "pages",
+                //     "{Slug?}",
+                //     defaults:new { controller = "Pages", action = "Page"}
+                // );
 
-                endpoints.MapControllerRoute(
-                    "products",
-                    "products/{categorySlug}",
-                    defaults: new { controller = "Products", action = "ProductsByCategory" }
-                );
+                //endpoints.MapControllerRoute(
+                //    "products",
+                //    "products/{categorySlug}",
+                //    defaults: new { controller = "Products", action = "ProductsByCategory" }
+                //);
 
                 endpoints.MapControllerRoute(
                     name: "areas",
@@ -92,7 +92,7 @@ namespace MyShoppingStore
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Pages}/{action=Page}/{id?}");
 
             });
         }
