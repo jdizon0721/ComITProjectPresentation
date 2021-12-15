@@ -19,7 +19,7 @@
                 @item.Price.ToString("C2")
             </p>
             <p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
+                <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" class="btn btn-primary">Add to cart</a>
             </p>
         </div>
     }
@@ -27,7 +27,7 @@
     @if(ViewBag.TotalPages > 1)
     {
         <div class ="d-flex w-100 justify-content-center">
-        <pagination page-count="@ViewBag.TotalPages" page-target="/products/@ViewBag.CategorySlug" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
+        <pagination page-count="@ViewBag.TotalPages" page-target="/products" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
         </div>
     } 
 </div>

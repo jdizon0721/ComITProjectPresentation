@@ -27,7 +27,9 @@ namespace MyShoppingStore
         {
             services.AddMemoryCache();
             services.AddSession();
+
             services.AddControllersWithViews();
+
             services.AddDbContext<MyShoppingStoreContext>(options => options.UseSqlServer
             (Configuration.GetConnectionString("MyShoppingStoreContext")));
         }
@@ -59,13 +61,13 @@ namespace MyShoppingStore
                 endpoints.MapControllerRoute(
                     "pages",
                     "{Slug?}",
-                    defaults:new {Controller = "Pages", action = "Page"}
+                    defaults:new { controller = "Pages", action = "Page"}
                 );
 
                 endpoints.MapControllerRoute(
                     "products",
                     "products/{categorySlug}",
-                    defaults: new { Controller = "Products", action = "ProductsByCategory" }
+                    defaults: new { controller = "Products", action = "ProductsByCategory" }
                 );
 
                 endpoints.MapControllerRoute(
@@ -76,6 +78,7 @@ namespace MyShoppingStore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyShoppingStore.Infrastructure
 {
-    public class CategoriesViewComponent:ViewComponent
+    public class CategoriesViewComponent : ViewComponent
     {
         private readonly MyShoppingStoreContext context;
 

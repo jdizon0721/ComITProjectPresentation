@@ -3,6 +3,7 @@ using MyShoppingStore.Infrastructure;
 using MyShoppingStore.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyShoppingStore.Controllers
 {
@@ -19,6 +20,7 @@ namespace MyShoppingStore.Controllers
         public IActionResult Index()
         {
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
             CartViewModel cartVM = new CartViewModel
             {
                 CartItems = cart,
@@ -26,6 +28,29 @@ namespace MyShoppingStore.Controllers
             };
 
             return View(cartVM);
+        }
+
+        //Get /Cart /Add
+        public async Task<IActionResult> Add(int id)
+        {
+            Product product = await context.Products.FindAsync(id);
+
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+               cart.Add(new CartItem(product));
+            }
+            else
+            {
+                cartItem.Quantity += 1;
+            }
+
+            HttpContext.Session.SetJson("Cart",cart);
+
+            return RedirectToAction("Index");
         }
     }
 }
