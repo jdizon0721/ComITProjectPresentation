@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyShoppingStore.Infrastructure;
+using MyShoppingStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,16 @@ namespace MyShoppingStore
 
             services.AddDbContext<MyShoppingStoreContext>(options => options.UseSqlServer
             (Configuration.GetConnectionString("MyShoppingStoreContext")));
+
+            services.AddIdentity<AppUser, IdentityRole>(options => {
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            })
+                    .AddEntityFrameworkStores<MyShoppingStoreContext>()
+                    .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +65,9 @@ namespace MyShoppingStore
             app.UseRouting();
 
             app.UseSession();
+
+          
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

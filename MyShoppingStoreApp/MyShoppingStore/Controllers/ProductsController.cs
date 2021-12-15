@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyShoppingStore.Infrastructure;
 using MyShoppingStore.Models;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyShoppingStore.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly MyShoppingStoreContext context;
