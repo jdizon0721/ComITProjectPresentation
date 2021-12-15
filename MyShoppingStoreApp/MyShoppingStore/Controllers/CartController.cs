@@ -24,7 +24,7 @@ namespace MyShoppingStore.Controllers
             CartViewModel cartVM = new CartViewModel
             {
                 CartItems = cart,
-                GrandTotal = cart.Sum(x => x.Price * x.Quantity)
+                TotalAmount = cart.Sum(x => x.Price * x.Quantity)
             };
 
             return View(cartVM);

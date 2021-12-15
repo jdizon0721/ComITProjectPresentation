@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyShoppingStore.Models;
 
 namespace MyShoppingStore.Infrastructure
 {
-    public class MyShoppingStoreContext: DbContext
+    public class MyShoppingStoreContext: IdentityDbContext<AppUser>
     {
         public MyShoppingStoreContext(DbContextOptions<MyShoppingStoreContext>options)
             : base(options)
