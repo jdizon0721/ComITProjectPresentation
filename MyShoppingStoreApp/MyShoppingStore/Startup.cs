@@ -71,8 +71,21 @@ namespace MyShoppingStore
 
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    "pages",
+                //    "{Slug?}",
+                //    defaults: new { controller = "Pages", action = "Page" }
+                //);
+
+                //endpoints.MapControllerRoute(
+                //    "products",
+                //    "products/{categorySlug}",
+                //    defaults: new { controller = "Products", action = "ProductsByCategory" }
+                //);
+
                 // endpoints.MapControllerRoute(
                 //     "pages",
                 //     "{Slug?}",
@@ -86,13 +99,23 @@ namespace MyShoppingStore
                 //);
 
                 endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                 name: "default",
+                 pattern:"{controller=Home}/{action=Index}/{id?}"
                 );
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pages}/{action=Page}/{id?}");
+                    pattern: "{controller=Pages}/{action=Page}/{id?}"
+                 );
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Products}/{categorySlug?}/"
+                 );
 
             });
         }

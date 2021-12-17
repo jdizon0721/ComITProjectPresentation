@@ -4,10 +4,10 @@
 {
     <p>Items in Cart: <span class = "badge badge-primary">@Model.NumberOfItems</span></p>
     <p>Total: <b>@Model.FinalAmount.ToString("C2")</b></p>
-    <a class = "btn btn-primary mb-2" asp-controller="Cart" asp-action="Index">View Cart</a>
+    <a class = "btn btn-secondary mb-2" asp-controller="Cart" asp-action="Index">View Cart</a>
     <br />
 }
-else
+else if(User?.Identity?.IsAuthenticated ?? true)
 {
     <p class= "lead m-0">Your cart is empty</p>
 }
